@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="video_crawler:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="video_crawler.war">
+      <element id="artifact" artifact-name="video_crawler:war exploded" />
+    </root>
+  </artifact>
+</component>
