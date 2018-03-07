@@ -10,15 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 页面分发器
  */
 @Controller("dispatcherController")
-@RequestMapping("/go/{keyword}")
+@RequestMapping("/go")
 public class DispatcherController {
 
-    @RequestMapping(value = "/video/videoPopularityCensus", method = RequestMethod.GET)
-    public String videoPopularityCensus(@PathVariable("keyword") String key) {
-        if (StringUtils.isBlank(key.trim().replace(" ", ""))) {
+    @RequestMapping(value = "/videoPopularityCensus", method = RequestMethod.GET)
+    public String videoPopularityCensus() {
 
-        }
-        return "";
+        return "census/video_popularity_census";
     }
 
     /**
@@ -26,8 +24,8 @@ public class DispatcherController {
      *
      * @return
      */
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public String index(){
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index() {
         return "index";
     }
 }

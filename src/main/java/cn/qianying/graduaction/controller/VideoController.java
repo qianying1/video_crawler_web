@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by qianhaibin on 2018/3/7.
@@ -40,8 +41,16 @@ public class VideoController {
      * @return
      */
     @RequestMapping(value = "/videoPopularityCensus", method = RequestMethod.GET)
-    public String videoPopularityCensus() {
+    public
+    @ResponseBody
+    Object
+    videoPopularityCensus() {
         return "census/video_popularity_census";
+    }
+
+    @RequestMapping(value = "/videoLengthCensus", method = RequestMethod.GET)
+    public String videoLengthCensus() {
+        return "";
     }
 
 }
