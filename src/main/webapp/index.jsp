@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
-    <script type="application/javascript" src="resources/js/jquery.js"></script>
-    <script type="application/javascript" src="resources/js/echarts.min.js"></script>
+    <script type="application/javascript" src="WEB-INF/lib/js/jquery.js"></script>
+    <script type="application/javascript" src="WEB-INF/lib/js/echarts.min.js"></script>
 </head>
 <title>hello</title>
 <body>

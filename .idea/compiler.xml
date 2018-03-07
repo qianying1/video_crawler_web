@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="video_crawler" />
+        <module name="video_crawler_web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="video_crawler" target="1.5" />
+      <module name="video_crawler_web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
