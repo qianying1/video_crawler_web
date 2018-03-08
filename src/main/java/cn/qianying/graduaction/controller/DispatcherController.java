@@ -68,18 +68,21 @@ public class DispatcherController {
 
     /**
      * 评论数量分布统计
+     *
      * @return
      */
-    @RequestMapping(value = "/commentCountDistributeCensus",method = RequestMethod.GET)
-    public String commentCountDistributeCensus(){ return "census/comment_count_distribute_census";}
+    @RequestMapping(value = "/commentCountDistributeCensus", method = RequestMethod.GET)
+    public String commentCountDistributeCensus() {
+        return "census/comment_count_distribute_census";
+    }
 
     /**
      * 视频收藏量统计
      *
      * @return
      */
-    @RequestMapping(value = "/favoriteCountCensus",method = RequestMethod.GET)
-    public String favoriteCountCensus(){
+    @RequestMapping(value = "/favoriteCountCensus", method = RequestMethod.GET)
+    public String favoriteCountCensus() {
         return "census/favorite_count_census";
     }
 
@@ -88,9 +91,9 @@ public class DispatcherController {
      *
      * @return
      */
-    @RequestMapping(value = "/typeDistributeCensus",method = RequestMethod.GET)
-    public String typeDistributeCensus(){
-        return "census/type_distribute_census";
+    @RequestMapping(value = "/typeAuthorDistributeCensus", method = RequestMethod.GET)
+    public String typeDistributeCensus() {
+        return "census/type_author_distribute_census";
     }
 
     /**

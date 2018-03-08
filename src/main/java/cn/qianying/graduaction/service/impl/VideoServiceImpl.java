@@ -1,7 +1,7 @@
 package cn.qianying.graduaction.service.impl;
 
 import cn.qianying.graduaction.dao.mapper.VideoMapper;
-import cn.qianying.graduaction.domain.vo.VideoLikesCensusVo;
+import cn.qianying.graduaction.vo.VideoLikesCensusVo;
 import cn.qianying.graduaction.service.VideoService;
 import org.springframework.stereotype.Service;
 

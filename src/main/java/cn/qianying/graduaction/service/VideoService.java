@@ -1,6 +1,6 @@
 package cn.qianying.graduaction.service;
 
-import cn.qianying.graduaction.domain.vo.VideoLikesCensusVo;
+import cn.qianying.graduaction.vo.VideoLikesCensusVo;
 
 import java.util.List;
 

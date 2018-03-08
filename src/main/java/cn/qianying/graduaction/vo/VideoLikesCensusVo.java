@@ -1,4 +1,4 @@
-package cn.qianying.graduaction.domain.vo;
+package cn.qianying.graduaction.vo;
 
 import java.io.Serializable;
 

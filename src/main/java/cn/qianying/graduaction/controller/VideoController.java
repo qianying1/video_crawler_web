@@ -1,6 +1,6 @@
 package cn.qianying.graduaction.controller;
 
-import cn.qianying.graduaction.domain.vo.VideoLikesCensusVo;
+import cn.qianying.graduaction.vo.VideoLikesCensusVo;
 import cn.qianying.graduaction.service.VideoService;
 import cn.qianying.graduaction.util.JsonMessage;
 import org.springframework.stereotype.Controller;

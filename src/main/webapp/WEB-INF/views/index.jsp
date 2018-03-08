@@ -17,7 +17,7 @@
         <li class="am-active am-tabs-nav1"><a href="">视频喜欢人数统计</a></li>
         <li id="huamian" class="am-tabs-nav1"><a href="">视频长度分布统计</a></li>
         <li class="am-tabs-nav1"><a href="">用户分布统计</a></li>
-        <li class="am-tabs-nav1"><a href="">视频类型统计</a></li>
+        <li class="am-tabs-nav1"><a href="">视频类型作者分布统计</a></li>
         <li class="am-tabs-nav1"><a href="">收藏数量统计</a></li>
         <li class="am-tabs-nav1"><a href="">评论数量分布统计</a></li>
         <li class="am-tabs-nav1"><a href="">作者年龄段统计</a></li>
@@ -45,7 +45,7 @@
             </iframe>
         </div>
         <div class="am-tab-panel" style="padding-top: 20px;">
-            <iframe name="myiframe" id="myrame3" src="/go/census/typeDistributeCensus.htm" frameborder="0" align="left"
+            <iframe name="myiframe" id="myrame3" src="/go/census/typeAuthorDistributeCensus.htm" frameborder="0" align="left"
                     width="110%" height="500"
                     scrolling="no">
                 <p>你的浏览器不支持iframe标签</p>

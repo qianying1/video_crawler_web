@@ -13,4 +13,18 @@
         select * from tb_video_author where
         author_page_url=#{authorPageUrl}
     </select>-->
+    <resultMap id="authorTypeDistruteCensusMap" type="cn.qianying.graduaction.vo.AuthorTypeDistributeVo">
+        <id column="typeId" property="typeId" jdbcType="BIGINT"/>
+        <result column="typeName" property="typeName" jdbcType="VARCHAR"/>
+        <result column="authorCount" property="authorCount" jdbcType="INTEGER"/>
+        <result column="follower" property="follower" jdbcType="INTEGER"/>
+        <result column="audienceCount" property="audienceCount" jdbcType="INTEGER"/>
+        <result column="attentionCount" property="attentionCount" jdbcType="INTEGER"/>
+        <result column="videoCount" property="videoCount" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="authorTypeDistruteCensus" resultMap="authorTypeDistruteCensusMap">
+      SELECT t.biliBili_rid as typeId,t.styleName as typeName,count(a.biliBili_mid) as authorCount,sum(a.follower) as follower,sum(a.audienceCount) as audienceCount,SUM(a.attentionCount) as attentionCount,sum(a.videoCount) as videoCount from video_author a
+       left join video v on v.biliBili_mid = a.biliBili_mid
+       left join style t on t.biliBili_rid = v.biliBili_rid;
+    </select>
 </mapper>

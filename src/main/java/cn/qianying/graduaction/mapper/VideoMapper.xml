@@ -14,7 +14,7 @@
         author_page_url=#{authorPageUrl}
     </select>-->
 
-    <resultMap id="videoMap" type="cn.qianying.graduaction.domain.vo.VideoLikesCensusVo">
+    <resultMap id="videoMap" type="cn.qianying.graduaction.vo.VideoLikesCensusVo">
         <id column="typeId" property="typeId" jdbcType="BIGINT"/>
         <result column="likes" property="likes" jdbcType="INTEGER"/>
         <result column="type" property="type" jdbcType="VARCHAR"/>

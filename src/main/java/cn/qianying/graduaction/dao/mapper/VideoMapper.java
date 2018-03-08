@@ -1,7 +1,7 @@
 package cn.qianying.graduaction.dao.mapper;
 
 import cn.qianying.graduaction.domain.GrabLib;
-import cn.qianying.graduaction.domain.vo.VideoLikesCensusVo;
+import cn.qianying.graduaction.vo.VideoLikesCensusVo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
