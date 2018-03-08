@@ -1,6 +1,7 @@
 package cn.qianying.graduaction.dao.mapper;
 
 import cn.qianying.graduaction.domain.GrabLib;
+import cn.qianying.graduaction.domain.vo.VideoLikesCensusVo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface VideoMapper extends CommonMapper<GrabLib>{
 	public boolean isGrabed(String url);
 
 	public boolean selectGrabLibs(String url);*/
+
+	List<VideoLikesCensusVo> videoLikeCensus();
 }

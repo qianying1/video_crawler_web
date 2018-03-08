@@ -3,87 +3,88 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="/images/logo.ico"/>
+    <meta http-equiv="content-Type" content="text/html; charset=UTF-8"
+    <style type="text/css" href="" rel="stylesheet"/>
+    <link href="${base}/css/amazeui.css" rel="stylesheet" type="text/css"/>
     <script type="application/javascript" src="/js/jquery.js"></script>
-    <script type="application/javascript" src="/js/echarts.min.js"></script>
+    <script type="application/javascript" src="/js/amazeui.min.js"></script>
 </head>
-<title>hello</title>
+<title>首页</title>
 <body>
-<div id="echart" style="width: 1000px;height: 500px;"></div>
-<script type="application/javascript">
-    option = {
-        title : {
-            text: '未来一周气温变化',
-            subtext: '纯属虚构'
-        },
-        tooltip : {
-            trigger: 'axis'
-        },
-        legend: {
-            data:['最高气温','最低气温']
-        },
-        toolbox: {
-            show : true,
-            feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
-                magicType : {show: true, type: ['line', 'bar']},
-                restore : {show: true},
-                saveAsImage : {show: true}
-            }
-        },
-        calculable : true,
-        xAxis : [
-            {
-                type : 'category',
-                boundaryGap : false,
-                data : ['周一','周二','周三','周四','周五','周六','周日']
-            }
-        ],
-        yAxis : [
-            {
-                type : 'value',
-                axisLabel : {
-                    formatter: '{value} °C'
-                }
-            }
-        ],
-        series : [
-            {
-                name:'最高气温',
-                type:'line',
-                data:[11, 11, 15, 13, 12, 13, 10],
-                markPoint : {
-                    data : [
-                        {type : 'max', name: '最大值'},
-                        {type : 'min', name: '最小值'}
-                    ]
-                },
-                markLine : {
-                    data : [
-                        {type : 'average', name: '平均值'}
-                    ]
-                }
-            },
-            {
-                name:'最低气温',
-                type:'line',
-                data:[1, -2, 2, 5, 3, 2, 0],
-                markPoint : {
-                    data : [
-                        {name : '周最低', value : -2, xAxis: 1, yAxis: -1.5}
-                    ]
-                },
-                markLine : {
-                    data : [
-                        {type : 'average', name : '平均值'}
-                    ]
-                }
-            }
-        ]
-    };
-    var memberChart = echarts.init(document.getElementById('echart'));
-    memberChart.setOption(option);
+<div class="am-tabs" id="doc-my-tabs" style="width: 80%;margin-left: 10%;margin-right: 10%;margin-top: 20px;">
+    <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+        <li class="am-active am-tabs-nav1"><a href="">视频喜欢人数统计</a></li>
+        <li id="huamian" class="am-tabs-nav1"><a href="">视频长度分布统计</a></li>
+        <li class="am-tabs-nav1"><a href="">用户分布统计</a></li>
+        <li class="am-tabs-nav1"><a href="">视频类型统计</a></li>
+        <li class="am-tabs-nav1"><a href="">收藏数量统计</a></li>
+        <li class="am-tabs-nav1"><a href="">评论数量分布统计</a></li>
+        <li class="am-tabs-nav1"><a href="">作者年龄段统计</a></li>
+    </ul>
+    <div class="am-tabs-bd">
+        <div class="am-tab-panel am-active" style="padding-top: 20px;">
+            <iframe name="myiframe" id="myrame" src="/go/census/videoLikesCensus.htm" frameborder="0" align="left"
+                    width="110%" height="500"
+                    scrolling="no">
+                <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+        </div>
+        <div class="am-tab-panel" style="padding-top: 20px;">
+            <iframe name="myiframe" id="myrame1" src="/go/census/videoLengthCensus.htm" frameborder="0" align="left"
+                    width="110%" height="500"
+                    scrolling="no">
+                <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+        </div>
+        <div class="am-tab-panel" style="padding-top: 20px;">
+            <iframe name="myiframe" id="myrame2" src="/go/census/userDistributeCensus.htm" frameborder="0" align="left"
+                    width="110%" height="500"
+                    scrolling="no">
+                <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+        </div>
+        <div class="am-tab-panel" style="padding-top: 20px;">
+            <iframe name="myiframe" id="myrame3" src="/go/census/typeDistributeCensus.htm" frameborder="0" align="left"
+                    width="110%" height="500"
+                    scrolling="no">
+                <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+        </div>
+        <div class="am-tab-panel" style="padding-top: 20px;">
+            <iframe name="myiframe" id="myrame4" src="/go/census/favoriteCountCensus.htm" frameborder="0" align="left"
+                    width="110%" height="500"
+                    scrolling="no">
+                <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+        </div>
+        <div class="am-tab-panel" style="padding-top: 20px;">
+            <iframe name="myiframe" id="myrame5" src="/go/census/commentCountDistributeCensus.htm" frameborder="0"
+                    align="left"
+                    width="110%" height="500"
+                    scrolling="no">
+                <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+        </div>
+        <div class="am-tab-panel" style="padding-top: 20px;">
+            <iframe name="myiframe" id="myrame6" src="/go/census/authorAgeDistributeCensus.htm" frameborder="0"
+                    align="left"
+                    width="110%" height="500"
+                    scrolling="no">
+                <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#doc-my-tabs').tabs();
+    });
+    /*$('#huamian').on("click", function () {
+     $('#doc-my-tabs').tabs("close", $('.am-tabs-nav1 a').eq(1));
+     $('#doc-my-tabs').tabs("open", $('.am-tabs-nav1 a').eq(2));
+     });*/
 </script>
 </body>
 </html>

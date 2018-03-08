@@ -13,4 +13,15 @@
         select * from tb_video_author where
         author_page_url=#{authorPageUrl}
     </select>-->
+
+    <resultMap id="videoMap" type="cn.qianying.graduaction.domain.vo.VideoLikesCensusVo">
+        <id column="typeId" property="typeId" jdbcType="BIGINT"/>
+        <result column="likes" property="likes" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="videoCount" property="videoCount" jdbcType="INTEGER" />
+    </resultMap>
+
+    <select id="videoLikeCensus" resultMap="videoMap">
+        select sum(v.bili_aid) as videoCount,sum(v.likes) as likes,t.biliBili_rid as typeId,t.styleName as type from video v left JOIN style t on v.biliBili_rid=t.biliBili_rid GROUP BY t.biliBili_rid;
+    </select>
 </mapper>

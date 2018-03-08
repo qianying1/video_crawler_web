@@ -1,16 +1,22 @@
 package cn.qianying.graduaction.controller;
 
+import cn.qianying.graduaction.domain.vo.VideoLikesCensusVo;
+import cn.qianying.graduaction.service.VideoService;
+import cn.qianying.graduaction.util.JsonMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
  * Created by qianhaibin on 2018/3/7.
  */
 @Controller("videoController")
-@RequestMapping(value = "/video")
+@RequestMapping(value = "/video", produces = "text/html;charset=UTF-8;")
 public class VideoController {
     /**
      * 错误页面
@@ -20,6 +26,8 @@ public class VideoController {
      * 页面根目录
      */
     private final String CENSUS_PAGE = "census/";
+    @Resource(name = "videoServiceImpl")
+    private VideoService videoService;
 
     /**
      * rest风格请求
@@ -36,16 +44,18 @@ public class VideoController {
     }
 
     /**
-     * 视频人气统计
+     * 视频喜欢人数统计
      *
      * @return
      */
-    @RequestMapping(value = "/videoPopularityCensus", method = RequestMethod.GET)
+    @RequestMapping(value = "/videoLikeCensus", method = RequestMethod.GET)
     public
     @ResponseBody
     Object
-    videoPopularityCensus() {
-        return "census/video_popularity_census";
+    videoLikesCensus() {
+        List<VideoLikesCensusVo> likesCensusVos = videoService.videoLikeCensus();
+        System.out.println(likesCensusVos);
+        return JsonMessage.success("data", likesCensusVos);
     }
 
     @RequestMapping(value = "/videoLengthCensus", method = RequestMethod.GET)

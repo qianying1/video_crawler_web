@@ -11,6 +11,6 @@
     <title>收藏数量统计</title>
 </head>
 <body>
-
+收藏数量统计
 </body>
 </html>

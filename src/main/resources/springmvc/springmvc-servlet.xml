@@ -19,7 +19,7 @@
     </context:component-scan>
 
     <!-- 对静态资源文件的访问 -->
-    <mvc:resources location="/WEB-INF/views/error/" mapping="/error/**" />
+    <mvc:resources location="/WEB-INF/views/error/" mapping="/error/**"/>
     <mvc:resources location="/WEB-INF/resources/images/" mapping="/images/**"/>
     <mvc:resources location="/WEB-INF/resources/js/" mapping="/js/**"/>
     <mvc:resources location="/WEB-INF/resources/projectjs/" mapping="/projectjs/**"/>
@@ -28,6 +28,77 @@
     <!--<mvc:resources location="/WEB-INF/lib/resources/" mapping="/resources/**"/>-->
     <!--<mvc:resources location="/WEB-INF/lib/bootstrap/" mapping="/bootstrap/**"/>-->
     <!--<mvc:resources location="/WEB-INF/lib/build/" mapping="/build/**"/>-->
+
+    <!--     拦截器     -->
+    <mvc:interceptors>
+        <!-- 分发拦截器 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/video/**"/>
+            <mvc:mapping path="/go/**"/>
+            <bean class="cn.qianying.graduaction.interceptor.DispatcherInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <map>
+                <entry key="ResourceNotFoundException" value="common/error/resourceNotFoundError"/>
+                <entry key="DataAccessException" value="common/error/dataAccessError"/>
+            </map>
+        </property>
+        <property name="statusCodes">
+            <map>
+                <entry key="common/error/resourceNotFoundError" value="404"/>
+                <entry key="common/error/dataAccessError" value="500"/>
+            </map>
+        </property>
+    </bean>
+
+    <!--     配置返回json数据      -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <!--json转换器-->
+                <ref bean="mappingJacksonHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJacksonHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+                <value>*/*;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <!--<bean id="stringConverter"
+          class="org.springframework.http.converter.StringHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/plain;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="jsonConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+    <bean
+            class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="stringConverter"/>
+                <ref bean="jsonConverter"/>
+            </list>
+        </property>
+    </bean>-->
 
     <bean id="jspView"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
