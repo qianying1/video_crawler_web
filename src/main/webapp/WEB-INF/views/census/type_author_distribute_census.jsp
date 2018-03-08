@@ -9,6 +9,10 @@
 <html>
 <head>
     <title>视频类型作者分布统计</title>
+    <link rel="shortcut icon" href="/images/logo.ico"/>
+    <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
+    <script type="application/javascript" src="/js/jquery.js"></script>
+    <script type="application/javascript" src="/js/echarts.min.js"></script>
 </head>
 <body>
 <div id="echart" style="width: 1000px;height: 500px;"></div>
@@ -92,7 +96,7 @@
             type: 'get',
             async: true,
             data: {},
-            contentType:'json',
+            contentType: 'json',
             success: function (data) {
                 console.log(data);
             },
