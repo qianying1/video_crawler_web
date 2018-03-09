@@ -1,8 +1,9 @@
 package cn.qianying.graduaction.controller;
 
-import cn.qianying.graduaction.vo.VideoLikesCensusVo;
 import cn.qianying.graduaction.service.VideoService;
 import cn.qianying.graduaction.util.JsonMessage;
+import cn.qianying.graduaction.vo.VideoLikesCensusVo;
+import cn.qianying.graduaction.vo.VideoLenDistributeCensusVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,6 +57,20 @@ public class VideoController {
         List<VideoLikesCensusVo> likesCensusVos = videoService.videoLikeCensus();
         System.out.println(likesCensusVos);
         return JsonMessage.success("data", likesCensusVos);
+    }
+
+    /**
+     * 视频长度分布统计
+     *
+     * @return
+     */
+    @RequestMapping(value = "/videoLenDistributeCensus", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Object videoLenDistributeCensus() {
+        List<VideoLenDistributeCensusVo> vos = videoService.videoLenDistributeCensus();
+        System.out.println(vos);
+        return JsonMessage.success("data", vos);
     }
 
     @RequestMapping(value = "/videoLengthCensus", method = RequestMethod.GET)

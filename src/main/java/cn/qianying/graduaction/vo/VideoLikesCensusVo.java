@@ -18,6 +18,14 @@ public class VideoLikesCensusVo implements Serializable {
      */
     private Long likes;
     /**
+     * 视频点击人数
+     */
+    private Long views;
+    /**
+     * 视频收藏人数
+     */
+    private Long favorite;
+    /**
      * 视频类型名称
      */
     private String type;
@@ -70,11 +78,29 @@ public class VideoLikesCensusVo implements Serializable {
         this.videoCount = videoCount;
     }
 
+    public Long getViews() {
+        return views;
+    }
+
+    public void setViews(Long views) {
+        this.views = views;
+    }
+
+    public Long getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Long favorite) {
+        this.favorite = favorite;
+    }
+
     @Override
     public String toString() {
         return "VideoLikesCensusVo{" +
                 "id=" + id +
                 ", likes=" + likes +
+                ", views=" + views +
+                ", favorite=" + favorite +
                 ", type='" + type + '\'' +
                 ", videoCount=" + videoCount +
                 ", typeId=" + typeId +

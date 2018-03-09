@@ -1,6 +1,7 @@
 package cn.qianying.graduaction.service.impl;
 
 import cn.qianying.graduaction.dao.mapper.VideoMapper;
+import cn.qianying.graduaction.vo.VideoLenDistributeCensusVo;
 import cn.qianying.graduaction.vo.VideoLikesCensusVo;
 import cn.qianying.graduaction.service.VideoService;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,21 @@ public class VideoServiceImpl implements VideoService {
         List<VideoLikesCensusVo> vos = null;
         try {
             vos = mapper.videoLikeCensus();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return vos;
+    }
+
+    /**
+     * 视频长度分布统计
+     *
+     * @return
+     */
+    public List<VideoLenDistributeCensusVo> videoLenDistributeCensus(){
+        List<VideoLenDistributeCensusVo> vos = null;
+        try {
+            vos = mapper.videoLenDistributeCensus();
         } catch (Exception e) {
             e.printStackTrace();
         }

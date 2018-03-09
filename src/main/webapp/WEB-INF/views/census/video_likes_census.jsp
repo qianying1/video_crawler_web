@@ -27,11 +27,15 @@
                     var typeData = [];
                     var likeData = [];
                     var videoCountData = [];
+                    var viewsCount = [];
+                    var favoriteCount = [];
                     var data = jsonData.data;
                     for (var i = 0; i < data.length; i++) {
                         typeData[i] = data[i].type;
                         likeData[i] = data[i].likes;
                         videoCountData[i] = data[i].videoCount;
+                        viewsCount[i] = data[i].views;
+                        favoriteCount[i] = data[i].favorite;
                     }
                     var option = {
                         title: {
@@ -42,7 +46,7 @@
                             trigger: 'axis'
                         },
                         legend: {
-                            data: ['视频数量', '喜欢人数']
+                            data: ['视频数量', '喜欢人数', '点击次数', '收藏人数']
                         },
                         toolbox: {
                             show: true,
@@ -87,6 +91,36 @@
                                 name: '喜欢人数',
                                 type: 'bar',
                                 data: likeData,
+                                markPoint: {
+                                    data: [
+                                        {type: 'max', name: '最大值'}, {type: 'min', name: '最小值'}
+                                    ]
+                                },
+                                markLine: {
+                                    data: [
+                                        {type: 'average', name: '平均值'}
+                                    ]
+                                }
+                            },
+                            {
+                                name: '点击次数',
+                                type: 'line',
+                                data: viewsCount,
+                                markPoint: {
+                                    data: [
+                                        {type: 'max', name: '最大值'}, {type: 'min', name: '最小值'}
+                                    ]
+                                },
+                                markLine: {
+                                    data: [
+                                        {type: 'average', name: '平均值'}
+                                    ]
+                                }
+                            },
+                            {
+                                name: '收藏人数',
+                                type: 'line',
+                                data: favoriteCount,
                                 markPoint: {
                                     data: [
                                         {type: 'max', name: '最大值'}, {type: 'min', name: '最小值'}

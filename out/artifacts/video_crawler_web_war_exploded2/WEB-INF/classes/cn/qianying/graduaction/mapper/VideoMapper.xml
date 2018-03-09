@@ -18,10 +18,24 @@
         <id column="typeId" property="typeId" jdbcType="BIGINT"/>
         <result column="likes" property="likes" jdbcType="INTEGER"/>
         <result column="type" property="type" jdbcType="VARCHAR"/>
-        <result column="videoCount" property="videoCount" jdbcType="INTEGER" />
+        <result column="videoCount" property="videoCount" jdbcType="INTEGER"/>
+        <result column="views" property="views" jdbcType="INTEGER"/>
+        <result column="favorite" property="favorite" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="videoLenDistributeCensusMap" type="cn.qianying.graduaction.vo.VideoLenDistributeCensusVo">
+        <id column="typeId" property="typeId" jdbcType="BIGINT"/>
+        <result column="typeName" property="typeName" jdbcType="VARCHAR"/>
+        <result column="duration" property="duration" jdbcType="BIGINT"/>
+        <result column="videoCount" property="videoCount" jdbcType="BIGINT"/>
+        <result column="views" property="views" jdbcType="BIGINT"/>
     </resultMap>
 
     <select id="videoLikeCensus" resultMap="videoMap">
-        select count(v.bili_aid) as videoCount,sum(v.likes) as likes,t.biliBili_rid as typeId,t.styleName as type from video v left JOIN style t on v.biliBili_rid=t.biliBili_rid GROUP BY t.biliBili_rid;
+        select count(v.bili_aid) as videoCount,sum(v.likes) as likes,t.biliBili_rid as typeId,t.styleName as type,sum(v.views) as views,sum(v.favorite) as favorite from video v left JOIN style t on v.biliBili_rid=t.biliBili_rid GROUP BY t.biliBili_rid;
+    </select>
+
+    <select id="videoLenDistributeCensus" resultMap="videoLenDistributeCensusMap">
+      select t.biliBili_rid as typeId,t.styleName as typeName,sum(v.duration) as duration,count(v.bili_aid) as videoCount,sum(v.views) as views from video v left join style t on t.biliBili_rid=v.biliBili_rid GROUP BY t.biliBili_rid;
     </select>
 </mapper>

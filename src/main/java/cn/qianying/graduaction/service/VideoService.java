@@ -1,12 +1,13 @@
 package cn.qianying.graduaction.service;
 
+import cn.qianying.graduaction.vo.VideoLenDistributeCensusVo;
 import cn.qianying.graduaction.vo.VideoLikesCensusVo;
 
 import java.util.List;
 
 /**
  * 视频
- *
+ * <p>
  * Created by qianhaibin on 2018/3/8.
  */
 public interface VideoService {
@@ -17,4 +18,11 @@ public interface VideoService {
      * @return
      */
     List<VideoLikesCensusVo> videoLikeCensus();
+
+    /**
+     * 视频长度分布统计
+     *
+     * @return
+     */
+    List<VideoLenDistributeCensusVo> videoLenDistributeCensus();
 }
