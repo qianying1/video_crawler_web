@@ -106,6 +106,9 @@ public class DispatcherController {
         return "census/type_author_distribute_census";
     }
 
+    @RequestMapping(value = "/fictionAndVideoDistributeCensus",method = RequestMethod.GET)
+    public String fictionAndVideoDistributeCensus(){return "census/fiction_and_video_distribute_census";}
+
     /**
      * 主页
      *

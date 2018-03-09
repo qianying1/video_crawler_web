@@ -19,8 +19,8 @@
         <li class="am-tabs-nav1"><a href="">视频评论统计</a></li>
         <li class="am-tabs-nav1"><a href="">视频收益分布统计</a></li>
         <li class="am-tabs-nav1"><a href="">视频类型作者分布统计</a></li>
-        <%--<li class="am-tabs-nav1"><a href="">收藏数量统计</a></li>
-        <li class="am-tabs-nav1"><a href="">评论数量分布统计</a></li>--%>
+        <li class="am-tabs-nav1"><a href="">小说和视频分布统计</a></li>
+        <%--<li class="am-tabs-nav1"><a href="">评论数量分布统计</a></li>--%>
         <%--<li class="am-tabs-nav1"><a href="">作者年龄段统计</a></li>--%>
     </ul>
     <div class="am-tabs-bd">
@@ -61,14 +61,14 @@
                 <p>你的浏览器不支持iframe标签</p>
             </iframe>
         </div>
-        <%--<div class="am-tab-panel">
-            <iframe name="myiframe" id="myrame4" src="/go/census/favoriteCountCensus.htm" frameborder="0" align="left"
+        <div class="am-tab-panel">
+            <iframe name="myiframe" id="myrame4" src="/go/census/fictionAndVideoDistributeCensus.htm" frameborder="0" align="left"
                     width="110%" height="500"
                     scrolling="no">
                 <p>你的浏览器不支持iframe标签</p>
             </iframe>
         </div>
-        <div class="am-tab-panel">
+        <%--<div class="am-tab-panel">
             <iframe name="myiframe" id="myrame5" src="/go/census/commentCountDistributeCensus.htm" frameborder="0"
                     align="left"
                     width="110%" height="500"
