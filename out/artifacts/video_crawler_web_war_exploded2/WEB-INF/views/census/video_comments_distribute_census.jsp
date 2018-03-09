@@ -31,7 +31,7 @@
                     var videoCount = [];
                     var data = jsonData.data;
                     for (var i = 0; i < data.length; i++) {
-                        typeData[i] = data[i].type;
+                        typeData[i] = data[i].typeName;
                         mask[i] = data[i].mask;
                         comments[i] = data[i].comments;
                         reviews[i] = data[i].reviews;

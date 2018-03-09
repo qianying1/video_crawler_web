@@ -21,7 +21,7 @@
         <li class="am-tabs-nav1"><a href="">视频类型作者分布统计</a></li>
         <%--<li class="am-tabs-nav1"><a href="">收藏数量统计</a></li>
         <li class="am-tabs-nav1"><a href="">评论数量分布统计</a></li>--%>
-        <li class="am-tabs-nav1"><a href="">作者年龄段统计</a></li>
+        <%--<li class="am-tabs-nav1"><a href="">作者年龄段统计</a></li>--%>
     </ul>
     <div class="am-tabs-bd">
         <div class="am-tab-panel am-active">
@@ -76,14 +76,14 @@
                 <p>你的浏览器不支持iframe标签</p>
             </iframe>
         </div>--%>
-        <div class="am-tab-panel">
+        <%--<div class="am-tab-panel">
             <iframe name="myiframe" id="myrame6" src="/go/census/authorAgeDistributeCensus.htm" frameborder="0"
                     align="left"
                     width="110%" height="500"
                     scrolling="no">
                 <p>你的浏览器不支持iframe标签</p>
             </iframe>
-        </div>
+        </div>--%>
     </div>
 </div>
 
