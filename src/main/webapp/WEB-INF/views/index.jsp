@@ -16,57 +16,67 @@
     <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
         <li class="am-active am-tabs-nav1"><a href="">视频喜欢人数统计</a></li>
         <li id="huamian" class="am-tabs-nav1"><a href="">视频长度分布统计</a></li>
-        <li class="am-tabs-nav1"><a href="">用户分布统计</a></li>
+        <li class="am-tabs-nav1"><a href="">视频评论统计</a></li>
+        <li class="am-tabs-nav1"><a href="">视频收益分布统计</a></li>
         <li class="am-tabs-nav1"><a href="">视频类型作者分布统计</a></li>
-        <li class="am-tabs-nav1"><a href="">收藏数量统计</a></li>
-        <li class="am-tabs-nav1"><a href="">评论数量分布统计</a></li>
+        <%--<li class="am-tabs-nav1"><a href="">收藏数量统计</a></li>
+        <li class="am-tabs-nav1"><a href="">评论数量分布统计</a></li>--%>
         <li class="am-tabs-nav1"><a href="">作者年龄段统计</a></li>
     </ul>
     <div class="am-tabs-bd">
-        <div class="am-tab-panel am-active" style="padding-top: 20px;">
+        <div class="am-tab-panel am-active">
             <iframe name="myiframe" id="myrame" src="/go/census/videoLikesCensus.htm" frameborder="0" align="left"
                     width="110%" height="500"
                     scrolling="no">
                 <p>你的浏览器不支持iframe标签</p>
             </iframe>
         </div>
-        <div class="am-tab-panel" style="padding-top: 20px;">
+        <div class="am-tab-panel">
             <iframe name="myiframe" id="myrame1" src="/go/census/videoLengthCensus.htm" frameborder="0" align="left"
                     width="110%" height="500"
                     scrolling="no">
                 <p>你的浏览器不支持iframe标签</p>
             </iframe>
         </div>
-        <div class="am-tab-panel" style="padding-top: 20px;">
-            <iframe name="myiframe" id="myrame2" src="/go/census/userDistributeCensus.htm" frameborder="0" align="left"
+        <div class="am-tab-panel">
+            <iframe name="myiframe" id="myrame2" src="/go/census/videoCommentsCensus.htm" frameborder="0" align="left"
                     width="110%" height="500"
                     scrolling="no">
                 <p>你的浏览器不支持iframe标签</p>
             </iframe>
         </div>
-        <div class="am-tab-panel" style="padding-top: 20px;">
-            <iframe name="myiframe" id="myrame3" src="/go/census/typeAuthorDistributeCensus.htm" frameborder="0" align="left"
-                    width="110%" height="500"
-                    scrolling="no">
-                <p>你的浏览器不支持iframe标签</p>
-            </iframe>
-        </div>
-        <div class="am-tab-panel" style="padding-top: 20px;">
-            <iframe name="myiframe" id="myrame4" src="/go/census/favoriteCountCensus.htm" frameborder="0" align="left"
-                    width="110%" height="500"
-                    scrolling="no">
-                <p>你的浏览器不支持iframe标签</p>
-            </iframe>
-        </div>
-        <div class="am-tab-panel" style="padding-top: 20px;">
-            <iframe name="myiframe" id="myrame5" src="/go/census/commentCountDistributeCensus.htm" frameborder="0"
+        <div class="am-tab-panel">
+            <iframe name="myiframe" id="myrame7" src="/go/census/videoIncomeDistributeCensus.htm" frameborder="0"
                     align="left"
                     width="110%" height="500"
                     scrolling="no">
                 <p>你的浏览器不支持iframe标签</p>
             </iframe>
         </div>
-        <div class="am-tab-panel" style="padding-top: 20px;">
+        <div class="am-tab-panel">
+            <iframe name="myiframe" id="myrame3" src="/go/census/typeAuthorDistributeCensus.htm" frameborder="0"
+                    align="left"
+                    width="110%" height="500"
+                    scrolling="no">
+                <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+        </div>
+        <%--<div class="am-tab-panel">
+            <iframe name="myiframe" id="myrame4" src="/go/census/favoriteCountCensus.htm" frameborder="0" align="left"
+                    width="110%" height="500"
+                    scrolling="no">
+                <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+        </div>
+        <div class="am-tab-panel">
+            <iframe name="myiframe" id="myrame5" src="/go/census/commentCountDistributeCensus.htm" frameborder="0"
+                    align="left"
+                    width="110%" height="500"
+                    scrolling="no">
+                <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+        </div>--%>
+        <div class="am-tab-panel">
             <iframe name="myiframe" id="myrame6" src="/go/census/authorAgeDistributeCensus.htm" frameborder="0"
                     align="left"
                     width="110%" height="500"

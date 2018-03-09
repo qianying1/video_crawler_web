@@ -1,6 +1,8 @@
 package cn.qianying.graduaction.service.impl;
 
 import cn.qianying.graduaction.dao.mapper.VideoMapper;
+import cn.qianying.graduaction.vo.VideoCommentsDistributeCensusVo;
+import cn.qianying.graduaction.vo.VideoIncomeDistributeCensusVo;
 import cn.qianying.graduaction.vo.VideoLenDistributeCensusVo;
 import cn.qianying.graduaction.vo.VideoLikesCensusVo;
 import cn.qianying.graduaction.service.VideoService;
@@ -43,6 +45,36 @@ public class VideoServiceImpl implements VideoService {
         List<VideoLenDistributeCensusVo> vos = null;
         try {
             vos = mapper.videoLenDistributeCensus();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return vos;
+    }
+
+    /**
+     * 视频评论分布统计
+     *
+     * @return
+     */
+    public List<VideoCommentsDistributeCensusVo> videoCommentsDistributeCensus(){
+        List<VideoCommentsDistributeCensusVo> vos = null;
+        try {
+            vos = mapper.videoCommentsDistributeCensus();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return vos;
+    }
+
+    /**
+     * 视频收益分布统计
+     *
+     * @return
+     */
+    public List<VideoIncomeDistributeCensusVo> videoIncomeDistributeCensus(){
+        List<VideoIncomeDistributeCensusVo> vos = null;
+        try {
+            vos = mapper.videoIncomeDistributeCensus();
         } catch (Exception e) {
             e.printStackTrace();
         }

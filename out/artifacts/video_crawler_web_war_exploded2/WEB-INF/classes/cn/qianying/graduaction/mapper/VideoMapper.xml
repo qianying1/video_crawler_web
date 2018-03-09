@@ -31,11 +31,36 @@
         <result column="views" property="views" jdbcType="BIGINT"/>
     </resultMap>
 
+    <resultMap id="videoCommentsDistributeCensusMap" type="cn.qianying.graduaction.vo.VideoCommentsDistributeCensusVo">
+        <id column="typeId" property="typeId" jdbcType="BIGINT"/>
+        <result column="typeName" property="typeName" jdbcType="VARCHAR"/>
+        <result column="mask" property="mask" jdbcType="INTEGER"/>
+        <result column="comments" property="comments" jdbcType="INTEGER"/>
+        <result column="reviews" property="reviews" jdbcType="INTEGER"/>
+        <result column="videoCount" property="videoCount" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <resultMap id="videoIncomeDistributeCensusMap" type="cn.qianying.graduaction.vo.VideoIncomeDistributeCensusVo">
+        <id column="typeId" property="typeId" jdbcType="BIGINT"/>
+        <result column="typeName" property="typeName" jdbcType="VARCHAR"/>
+        <result column="coin" property="coin" jdbcType="INTEGER"/>
+        <result column="share" property="share" jdbcType="INTEGER"/>
+        <result column="videoCount" property="videoCount" jdbcType="BIGINT"/>
+    </resultMap>
+
     <select id="videoLikeCensus" resultMap="videoMap">
         select count(v.bili_aid) as videoCount,sum(v.likes) as likes,t.biliBili_rid as typeId,t.styleName as type,sum(v.views) as views,sum(v.favorite) as favorite from video v left JOIN style t on v.biliBili_rid=t.biliBili_rid GROUP BY t.biliBili_rid;
     </select>
 
     <select id="videoLenDistributeCensus" resultMap="videoLenDistributeCensusMap">
       select t.biliBili_rid as typeId,t.styleName as typeName,sum(v.duration) as duration,count(v.bili_aid) as videoCount,sum(v.views) as views from video v left join style t on t.biliBili_rid=v.biliBili_rid GROUP BY t.biliBili_rid;
+    </select>
+
+    <select id="videoCommentsDistributeCensus" resultMap="videoCommentsDistributeCensusMap">
+      select t.biliBili_rid as typeId,t.styleName as typeName,sum(v.masks) as mask,sum(v.comments) as comments,sum(v.review) as reviews,count(v.bili_aid) as videoCount from video v LEFT join style t on t.biliBili_rid=v.biliBili_rid GROUP BY t.biliBili_rid;
+    </select>
+
+    <select id="videoIncomeDistributeCensus" resultMap="videoIncomeDistributeCensusMap">
+      SELECT t.biliBili_rid as typeId,t.styleName as typeName,sum(v.coin) as coin,sum(v.share) as share,count(v.bili_aid) as videoCount from video v left join style t on v.biliBili_rid=t.biliBili_rid GROUP BY t.biliBili_rid;
     </select>
 </mapper>

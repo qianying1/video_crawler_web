@@ -47,13 +47,23 @@ public class DispatcherController {
     }
 
     /**
-     * 用户分布统计
+     * 视频收益分布统计
      *
      * @return
      */
-    @RequestMapping(value = "/userDistributeCensus", method = RequestMethod.GET)
+    @RequestMapping(value = "/videoIncomeDistributeCensus", method = RequestMethod.GET)
+    public String videoIncomeDistributeCensus() {
+        return "census/video_income_distribute_census";
+    }
+
+    /**
+     * 视频评论分布统计
+     *
+     * @return
+     */
+    @RequestMapping(value = "/videoCommentsCensus", method = RequestMethod.GET)
     public String userDistributeCensus() {
-        return "census/user_distribute_census";
+        return "census/video_comments_distribute_census";
     }
 
     /**

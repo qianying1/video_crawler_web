@@ -1,6 +1,8 @@
 package cn.qianying.graduaction.dao.mapper;
 
 import cn.qianying.graduaction.domain.GrabLib;
+import cn.qianying.graduaction.vo.VideoCommentsDistributeCensusVo;
+import cn.qianying.graduaction.vo.VideoIncomeDistributeCensusVo;
 import cn.qianying.graduaction.vo.VideoLenDistributeCensusVo;
 import cn.qianying.graduaction.vo.VideoLikesCensusVo;
 import org.springframework.stereotype.Repository;
@@ -34,4 +36,18 @@ public interface VideoMapper extends CommonMapper<GrabLib> {
      * @return
      */
     List<VideoLenDistributeCensusVo> videoLenDistributeCensus();
+
+    /**
+     * 视频评论分布统计
+     *
+     * @return
+     */
+    List<VideoCommentsDistributeCensusVo> videoCommentsDistributeCensus();
+
+    /**
+     * 视频收益分布统计
+     *
+     * @return
+     */
+    List<VideoIncomeDistributeCensusVo> videoIncomeDistributeCensus();
 }
