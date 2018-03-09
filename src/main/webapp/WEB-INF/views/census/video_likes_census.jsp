@@ -10,90 +10,167 @@
 </head>
 <title>视频喜欢统计</title>
 <body>
-<div id="echart" style="width: 1000px;height: 500px;"></div>
+<div id="echart" style="width: 1300px;height: 500px;"></div>
 <script type="application/javascript">
-    option = {
-        title: {
-            text: '未来一周气温变化',
-            subtext: '纯属虚构'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['最高气温', '最低气温']
-        },
-        toolbox: {
-            show: true,
-            feature: {
-                mark: {show: true},
-                dataView: {show: true, readOnly: false},
-                magicType: {show: true, type: ['line', 'bar']},
-                restore: {show: true},
-                saveAsImage: {show: true}
-            }
-        },
-        calculable: true,
-        xAxis: [
-            {
-                type: 'category',
-                boundaryGap: false,
-                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value',
-                axisLabel: {
-                    formatter: '{value} °C'
-                }
-            }
-        ],
-        series: [
-            {
-                name: '最高气温',
-                type: 'line',
-                data: [11, 11, 15, 13, 12, 13, 10],
-                markPoint: {
-                    data: [
-                        {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
-            },
-            {
-                name: '最低气温',
-                type: 'line',
-                data: [1, -2, 2, 5, 3, 2, 0],
-                markPoint: {
-                    data: [
-                        {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
-            }
-        ]
-    };
+    /*option = {
+     title: {
+     text: '某地区蒸发量和降水量',
+     subtext: '纯属虚构'
+     },
+     tooltip: {
+     trigger: 'axis'
+     },
+     legend: {
+     data: ['蒸发量', '降水量']
+     },
+     toolbox: {
+     show: true,
+     feature: {
+     mark: {show: true},
+     dataView: {show: true, readOnly: false},
+     magicType: {show: true, type: ['line', 'bar']},
+     restore: {show: true},
+     saveAsImage: {show: true}
+     }
+     },
+     calculable: true,
+     xAxis: [
+     {
+     type: 'category',
+     data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+     }
+     ],
+     yAxis: [
+     {
+     type: 'value'
+     }
+     ],
+     series: [
+     {
+     name: '蒸发量',
+     type: 'bar',
+     data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+     markPoint: {
+     data: [
+     {type: 'max', name: '最大值'},
+     {type: 'min', name: '最小值'}
+     ]
+     },
+     markLine: {
+     data: [
+     {type: 'average', name: '平均值'}
+     ]
+     }
+     },
+     {
+     name: '降水量',
+     type: 'bar',
+     data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+     markPoint: {
+     data: [
+     {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183, symbolSize: 18},
+     {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
+     ]
+     },
+     markLine: {
+     data: [
+     {type: 'average', name: '平均值'}
+     ]
+     }
+     }
+     ]
+     };*/
     var memberChart = echarts.init(document.getElementById('echart'));
-    memberChart.setOption(option);
     $(function () {
         $.ajax({
             url: "/video/videoLikeCensus.htm",
             type: 'get',
             async: true,
             data: {},
-            contentType:'json',
+            contentType: 'json',
             success: function (data) {
-                console.log(data);
+                var jsonData = eval('(' + data + ')');
+                console.log(jsonData);
+                if (jsonData.code == 0) {
+                    var typeData = [];
+                    var likeData = [];
+                    var videoCountData = [];
+                    var data = jsonData.data;
+                    for (var i = 0; i < data.length; i++) {
+                        typeData[i] = data[i].type;
+                        likeData[i] = data[i].likes;
+                        videoCountData[i] = data[i].videoCount;
+                    }
+                    var option = {
+                        title: {
+                            text: '视频喜欢数量统计',
+                            subtext: '来源于各大视频网站'
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            data: ['视频数量', '喜欢人数']
+                        },
+                        toolbox: {
+                            show: true,
+                            feature: {
+                                mark: {show: true},
+                                dataView: {show: true, readOnly: false},
+                                magicType: {show: true, type: ['line', 'bar']},
+                                restore: {show: true},
+                                saveAsImage: {show: true}
+                            }
+                        },
+                        calculable: true,
+                        xAxis: [
+                            {
+                                type: 'category',
+                                data: typeData
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'value'
+                            }
+                        ],
+                        series: [
+                            {
+                                name: '视频数量',
+                                type: 'bar',
+                                data: videoCountData,
+                                markPoint: {
+                                    data: [
+                                        {type: 'max', name: '最大值'},
+                                        {type: 'min', name: '最小值'}
+                                    ]
+                                },
+                                markLine: {
+                                    data: [
+                                        {type: 'average', name: '平均值'}
+                                    ]
+                                }
+                            },
+                            {
+                                name: '喜欢人数',
+                                type: 'bar',
+                                data: likeData,
+                                markPoint: {
+                                    data: [
+                                        {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183, symbolSize: 18},
+                                        {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
+                                    ]
+                                },
+                                markLine: {
+                                    data: [
+                                        {type: 'average', name: '平均值'}
+                                    ]
+                                }
+                            }
+                        ]
+                    };
+                }
+                memberChart.setOption(option);
             },
             error: function () {
 
