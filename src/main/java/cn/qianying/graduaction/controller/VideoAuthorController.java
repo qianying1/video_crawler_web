@@ -12,12 +12,15 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Controller("videoAuthorController")
-@RequestMapping(value = "/video_author")
+@RequestMapping(value = "/video_author", produces = "text/html;charset=UTF-8;")
 public class VideoAuthorController {
 
     @Resource(name = "videoAuthorServiceImpl")
     private VideoAuthorService videoAuthorService;
 
+    /**
+     * @return
+     */
     @RequestMapping(value = "/typeDistributeCensus", method = RequestMethod.GET)
     public
     @ResponseBody

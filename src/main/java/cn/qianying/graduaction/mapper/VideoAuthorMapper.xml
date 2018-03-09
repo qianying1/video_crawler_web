@@ -17,10 +17,10 @@
         <id column="typeId" property="typeId" jdbcType="BIGINT"/>
         <result column="typeName" property="typeName" jdbcType="VARCHAR"/>
         <result column="authorCount" property="authorCount" jdbcType="INTEGER"/>
-        <!--<result column="follower" property="follower" jdbcType="INTEGER"/>
+        <result column="follower" property="follower" jdbcType="INTEGER"/>
         <result column="audienceCount" property="audienceCount" jdbcType="INTEGER"/>
         <result column="attentionCount" property="attentionCount" jdbcType="INTEGER"/>
-        <result column="videoCount" property="videoCount" jdbcType="INTEGER"/>-->
+        <result column="videoCount" property="videoCount" jdbcType="INTEGER"/>
     </resultMap>
     <select id="authorTypeDistruteCensus" resultMap="authorTypeDistruteCensusMap">
       select t.biliBili_rid as typeId,t.styleName as typeName,count(a.biliBili_mid) as authorCount from video v

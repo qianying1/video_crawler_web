@@ -98,7 +98,8 @@
             data: {},
             contentType: 'json',
             success: function (data) {
-                console.log(data);
+                var authorData=eval('('+data+')');
+                console.log(authorData);
             },
             error: function () {
 
