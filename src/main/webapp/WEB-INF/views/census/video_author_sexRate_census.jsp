@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>小说和视频分布统计</title>
+    <title>视频作者性别比例分布统计</title>
     <link rel="shortcut icon" href="/images/logo.ico"/>
     <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
     <script type="application/javascript" src="/js/jquery.js"></script>
@@ -20,7 +20,7 @@
     var memberChart = echarts.init(document.getElementById('echart'));
     $(function () {
         $.ajax({
-            url: "/fiction/fictionAndVideoDistributeCensus.htm",
+            url: "/video_author/videoAuthorSexRateCensus.htm",
             type: 'get',
             async: true,
             data: {},
@@ -30,28 +30,26 @@
                 console.log(sourceData);
                 if (sourceData.code == 0) {
                     var fictionData = sourceData.data;
-                    var typeData = [];
-                    var favoriteKeyVal = [];
-                    var masksKeyVal = [];
-                    var viewsKeyVal = [];
-                    var countsKeyVal = [];
+                    var type = [];
+                    var maleKeyVal = [];
+                    var femaleKeyVal = [];
+                    var secretKeyVal = [];
                     for (var i = 0; i < fictionData.length; i++) {
-                        typeData[i] = fictionData[i].typeName!=undefined?fictionData[i].typeName:'综合';
-                        favoriteKeyVal[i] = fictionData[i].favorite;
-                        masksKeyVal[i] = fictionData[i].masks;
-                        viewsKeyVal[i] = fictionData[i].views;
-                        countsKeyVal[i] = fictionData[i].counts;
+                        maleKeyVal[i] = fictionData[i].male;
+                        femaleKeyVal[i] = fictionData[i].female;
+                        secretKeyVal[i] = fictionData[i].secret;
+                        type[i] = fictionData[i].typeName!=undefined?fictionData[i].typeName:'综合';
                     }
                     var option = {
                         title: {
-                            text: '小说和视频分布统计',
+                            text: '作者性别比例分布统计',
                             subtext: '来源于各大视频网站'
                         },
                         tooltip: {
                             trigger: 'axis'
                         },
                         legend: {
-                            data: ['收藏人数', '弹幕数量', '点击次数', '内容数量']
+                            data: ['男', '女', '保密']
                         },
                         toolbox: {
                             show: true,
@@ -68,7 +66,7 @@
                             {
                                 type: 'category',
                                 boundaryGap: false,
-                                data: typeData
+                                data: type
                             }
                         ],
                         yAxis: [
@@ -81,9 +79,9 @@
                         ],
                         series: [
                             {
-                                name: '收藏人数',
-                                type: 'line',
-                                data: favoriteKeyVal,
+                                name: '男',
+                                type: 'bar',
+                                data: maleKeyVal,
                                 markPoint: {
                                     data: [
                                         {type: 'max', name: '最大值'},
@@ -97,9 +95,9 @@
                                 }
                             },
                             {
-                                name: '弹幕数量',
+                                name: '女',
                                 type: 'bar',
-                                data: masksKeyVal,
+                                data: femaleKeyVal,
                                 markPoint: {
                                     data: [
                                         {type: 'max', name: '最大值'}, {type: 'min', name: '最小值'}
@@ -112,24 +110,9 @@
                                 }
                             },
                             {
-                                name: '点击次数',
+                                name: '保密',
                                 type: 'bar',
-                                data: viewsKeyVal,
-                                markPoint: {
-                                    data: [
-                                        {type: 'max', name: '最大值'}, {type: 'min', name: '最小值'}
-                                    ]
-                                },
-                                markLine: {
-                                    data: [
-                                        {type: 'average', name: '平均值'}
-                                    ]
-                                }
-                            },
-                            {
-                                name: '内容数量',
-                                type: 'line',
-                                data: countsKeyVal,
+                                data: secretKeyVal,
                                 markPoint: {
                                     data: [
                                         {type: 'max', name: '最大值'}, {type: 'min', name: '最小值'}
@@ -143,14 +126,16 @@
                             }
                         ]
                     };
+                    memberChart.setOption(option);
                 }
-                memberChart.setOption(option);
             },
             error: function () {
-            },
+            }
+            ,
             beforeSend: function () {
             }
-        });
+        })
+        ;
     })
     ;
 </script>

@@ -57,6 +57,7 @@ public class VideoController {
     Object
     videoLikesCensus() {
         List<VideoLikesCensusVo> likesCensusVos = videoService.videoLikeCensus();
+        System.out.println("videoLikesCensus: ");
         System.out.println(likesCensusVos);
         return JsonMessage.success("data", likesCensusVos);
     }
@@ -71,6 +72,7 @@ public class VideoController {
     @ResponseBody
     Object videoLenDistributeCensus() {
         List<VideoLenDistributeCensusVo> vos = videoService.videoLenDistributeCensus();
+        System.out.println("videoLenDistributeCensus: ");
         System.out.println(vos);
         return JsonMessage.success("data", vos);
     }
@@ -85,6 +87,7 @@ public class VideoController {
     @ResponseBody
     Object videoCommentsDistributeCensus() {
         List<VideoCommentsDistributeCensusVo> vos = videoService.videoCommentsDistributeCensus();
+        System.out.println("videoCommentsDistributeCensus: ");
         System.out.println(vos);
         return JsonMessage.success("data", vos);
     }
@@ -99,6 +102,7 @@ public class VideoController {
     @ResponseBody
     Object videoIncomeDistributeCensus() {
         List<VideoIncomeDistributeCensusVo> vos = videoService.videoIncomeDistributeCensus();
+        System.out.println("videoIncomeDistributeCensus:");
         System.out.println(vos);
         return JsonMessage.success("data", vos);
     }

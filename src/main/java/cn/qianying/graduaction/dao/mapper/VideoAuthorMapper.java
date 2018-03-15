@@ -2,6 +2,7 @@ package cn.qianying.graduaction.dao.mapper;
 
 import cn.qianying.graduaction.domain.VideoAuthor;
 import cn.qianying.graduaction.vo.AuthorTypeDistributeVo;
+import cn.qianying.graduaction.vo.VideoAuthorSexRateCensusVo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,4 +23,11 @@ public interface VideoAuthorMapper extends CommonMapper<VideoAuthor> {
      * @return
      */
     List<AuthorTypeDistributeVo> authorTypeDistruteCensus();
+
+    /**
+     * 视频作者性别比例分布统计
+     *
+     * @return
+     */
+    List<VideoAuthorSexRateCensusVo> videoAuthorSexRateCensus();
 }

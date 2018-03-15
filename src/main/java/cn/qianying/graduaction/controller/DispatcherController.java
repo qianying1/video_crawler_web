@@ -106,8 +106,35 @@ public class DispatcherController {
         return "census/type_author_distribute_census";
     }
 
-    @RequestMapping(value = "/fictionAndVideoDistributeCensus",method = RequestMethod.GET)
-    public String fictionAndVideoDistributeCensus(){return "census/fiction_and_video_distribute_census";}
+    /**
+     * 小说和视频分布统计
+     *
+     * @return
+     */
+    @RequestMapping(value = "/fictionAndVideoDistributeCensus", method = RequestMethod.GET)
+    public String fictionAndVideoDistributeCensus() {
+        return "census/fiction_and_video_distribute_census";
+    }
+
+    /**
+     * 视频作者性别比例分布统计
+     *
+     * @return
+     */
+    @RequestMapping(value = "/videoAuthorSexRateCensus", method = RequestMethod.GET)
+    public String videoAuthorSexRateCensus() {
+        return "census/video_author_sexRate_census";
+    }
+
+    /**
+     * 类型视频占比
+     *
+     * @return
+     */
+    @RequestMapping(value = "/typeVideRateCensus", method = RequestMethod.GET)
+    public String typeVideRateCensus() {
+        return "census/type_vide_rate_census";
+    }
 
     /**
      * 主页

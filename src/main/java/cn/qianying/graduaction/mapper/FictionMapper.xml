@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qianying.graduaction.dao.mapper.FictionMapper">
+
+    <resultMap id="fictionAndVideoDistributeCensusMap"
+               type="cn.qianying.graduaction.vo.FictionAndVideoDistributeCensusVo">
+        <id column="typeId" property="typeId" jdbcType="BIGINT"/>
+        <result column="typeName" property="typeName" jdbcType="VARCHAR"/>
+        <result column="favorite" property="favorite" jdbcType="INTEGER"/>
+        <result column="masks" property="masks" jdbcType="INTEGER"/>
+        <result column="views" property="views" jdbcType="BIGINT"/>
+        <result column="counts" property="counts" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="fictionAndVideoDistributeCensus" resultMap="fictionAndVideoDistributeCensusMap" timeout="240">
+        select -3 as typeId,'小说' as typeName,sum(f.favorite) as favorite,sum(f.dm_count) as masks,sum(f.play_count) as views,count(f.id) as counts from fiction f
+         union all select v.biliBili_rid as typeId,t.styleName as typeName,sum(v.favorite) as favorite,sum(v.masks) as masks,sum(v.views) as views,count(v.bili_aid) as counts from video v left join style t on t.biliBili_rid=v.biliBili_rid GROUP by v.biliBili_rid;
+    </select>
+</mapper>

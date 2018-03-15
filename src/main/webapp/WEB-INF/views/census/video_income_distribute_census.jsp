@@ -30,7 +30,7 @@
                     var videoCount = [];
                     var data = jsonData.data;
                     for (var i = 0; i < data.length; i++) {
-                        typeData[i] = data[i].typeName;
+                        typeData[i] = data[i].typeName!=undefined?data[i].typeName:'综合';
                         coin[i] = data[i].coin;
                         share[i] = data[i].share;
                         videoCount[i] = data[i].videoCount;

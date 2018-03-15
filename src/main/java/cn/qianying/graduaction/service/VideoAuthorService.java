@@ -1,6 +1,7 @@
 package cn.qianying.graduaction.service;
 
 import cn.qianying.graduaction.vo.AuthorTypeDistributeVo;
+import cn.qianying.graduaction.vo.VideoAuthorSexRateCensusVo;
 
 import java.util.List;
 
@@ -15,4 +16,11 @@ public interface VideoAuthorService {
      * @return
      */
     List<AuthorTypeDistributeVo> authorTypeDistruteCensus();
+
+    /**
+     * 视频作者性别比例分布统计
+     *
+     * @return
+     */
+    List<VideoAuthorSexRateCensusVo> videoAuthorSexRateCensus();
 }

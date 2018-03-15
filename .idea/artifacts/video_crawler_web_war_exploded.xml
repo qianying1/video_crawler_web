@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="video_crawler_web:war exploded2">
-    <output-path>$PROJECT_DIR$/out/artifacts/video_crawler_web_war_exploded2</output-path>
+  <artifact type="exploded-war" name="video_crawler_web:war exploded">
+    <output-path>$PROJECT_DIR$/target/video_crawler</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -30,6 +30,8 @@
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.6" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.6" />
+          <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.2" />
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:3.0-alpha-1" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.2.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.testng:testng:6.8.8" />
@@ -47,6 +49,9 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.7.4" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.12" />
         </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/video_crawler/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="video_crawler_web/web/Web" />
     </root>

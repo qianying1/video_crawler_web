@@ -22,9 +22,9 @@
     <mvc:resources location="/WEB-INF/views/error/" mapping="/error/**"/>
     <mvc:resources location="/WEB-INF/resources/images/" mapping="/images/**"/>
     <mvc:resources location="/WEB-INF/resources/js/" mapping="/js/**"/>
-    <mvc:resources location="/WEB-INF/resources/projectjs/" mapping="/projectjs/**"/>
+    <!--<mvc:resources location="/WEB-INF/resources/projectjs/" mapping="/projectjs/**"/>-->
     <mvc:resources location="/WEB-INF/resources/css/" mapping="/css/**"/>
-    <mvc:resources location="/WEB-INF/resources/fonts/" mapping="/fonts/**"/>
+    <!--<mvc:resources location="/WEB-INF/resources/fonts/" mapping="/fonts/**"/>-->
     <!--<mvc:resources location="/WEB-INF/lib/resources/" mapping="/resources/**"/>-->
     <!--<mvc:resources location="/WEB-INF/lib/bootstrap/" mapping="/bootstrap/**"/>-->
     <!--<mvc:resources location="/WEB-INF/lib/build/" mapping="/build/**"/>-->

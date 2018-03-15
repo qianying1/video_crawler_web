@@ -31,7 +31,7 @@
                     var favoriteCount = [];
                     var data = jsonData.data;
                     for (var i = 0; i < data.length; i++) {
-                        typeData[i] = data[i].type;
+                        typeData[i] = data[i].type != undefined ? data[i].type : '综合';
                         likeData[i] = data[i].likes;
                         videoCountData[i] = data[i].videoCount;
                         viewsCount[i] = data[i].views;

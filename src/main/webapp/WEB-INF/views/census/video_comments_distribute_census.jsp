@@ -31,7 +31,7 @@
                     var videoCount = [];
                     var data = jsonData.data;
                     for (var i = 0; i < data.length; i++) {
-                        typeData[i] = data[i].typeName;
+                        typeData[i] = data[i].typeName!=undefined?data[i].typeName:'综合';
                         mask[i] = data[i].mask;
                         comments[i] = data[i].comments;
                         reviews[i] = data[i].reviews;

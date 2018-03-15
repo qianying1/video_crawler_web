@@ -38,7 +38,7 @@
                     var followerData = [];
                     var videoCountData = [];
                     for (var i = 0; i < authorSourceData.length; i++) {
-                        typeData[i] = authorSourceData[i].typeName;
+                        typeData[i] = authorSourceData[i].typeName!=undefined?authorSourceData[i].typeName:'综合';
                         attentionData[i] = authorSourceData[i].attentionCount;
                         audienceData[i] = authorSourceData[i].audienceCount;
                         authorData[i] = authorSourceData[i].authorCount;

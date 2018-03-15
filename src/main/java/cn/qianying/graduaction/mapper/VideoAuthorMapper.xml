@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.qianying.graduaction.dao.mapper.VideoAuthorMapper">
-    <!--<insert id="insertVideoAuthor" parameterType="cn.qianying.graduaction.domain.VideoAuthor"
-        useGeneratedKeys="true" keyProperty="id">
-        insert into
-        tb_video_author(signature,video_count,attention_count,audience_count,author_page_url,author_pic,author_name)
-        values(#{signature,jdbcType=TEXT},#{videoCount,jdbcType=INT},#{attentionCount,jdbcType=INT},#{audienceCount,jdbcType=INT},#{authorPageUrl,jdbcType=TEXT},#{authorPic,jdbcType=VARCHAR},#{authorName,jdbcType=VARCHAR})
-    </insert>
-
-    <select id="selectVideoAuthors" parameterType="java.lang.String"
-        resultType="java.util.List">
-        select * from tb_video_author where
-        author_page_url=#{authorPageUrl}
-    </select>-->
     <resultMap id="authorTypeDistruteCensusMap" type="cn.qianying.graduaction.vo.AuthorTypeDistributeVo">
         <id column="typeId" property="typeId" jdbcType="BIGINT"/>
         <result column="typeName" property="typeName" jdbcType="VARCHAR"/>
@@ -22,10 +10,28 @@
         <result column="attentionCount" property="attentionCount" jdbcType="INTEGER"/>
         <result column="videoCount" property="videoCount" jdbcType="INTEGER"/>
     </resultMap>
-    <select id="authorTypeDistruteCensus" resultMap="authorTypeDistruteCensusMap">
-      select t.biliBili_rid as typeId,t.styleName as typeName,count(a.biliBili_mid) as authorCount,sum(a.follower) as follower,sum(a.audienceCount) as audienceCount,sum(a.attentionCount) as attentionCount,count(v.bili_aid) as videoCount from video v
-left join style t on t.biliBili_rid=v.biliBili_rid
-left join video_author a on a.biliBili_mid=v.biliBili_mid
+    <resultMap id="videoAuthorSexRateCensusMap" type="cn.qianying.graduaction.vo.VideoAuthorSexRateCensusVo">
+        <id column="typeId" property="typeId" jdbcType="BIGINT"/>
+        <result column="typeName" property="typeName" jdbcType="VARCHAR"/>
+        <result column="female" property="female" jdbcType="INTEGER"/>
+        <result column="male" property="male" jdbcType="INTEGER"/>
+        <result column="secret" property="secret" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="authorTypeDistruteCensus" resultMap="authorTypeDistruteCensusMap" timeout="600">
+      select t.biliBili_rid as typeId,t.styleName as typeName,
+(select count(a.biliBili_mid) from video_author a where a.type_id=t.biliBili_rid) as authorCount,
+(select sum(a.follower) from video_author a where a.type_id=t.biliBili_rid) as follower,
+(select sum(a.audienceCount) from video_author a where a.type_id=t.biliBili_rid) as audienceCount,
+(select sum(a.attentionCount) from video_author a where a.type_id=t.biliBili_rid) as attentionCount,
+(select count(v.bili_aid) from video v where v.biliBili_rid=t.biliBili_rid) as videoCount from style t
 group by t.biliBili_rid;
+    </select>
+
+    <select id="videoAuthorSexRateCensus" resultMap="videoAuthorSexRateCensusMap">
+    select t.biliBili_rid as typeId,t.styleName as typeName,
+    (select count(e.biliBili_mid) from video_author e where e.sex='男' and e.type_id=t.biliBili_rid) as male,
+    (select count(e.biliBili_mid) from video_author e where e.sex='保密' and e.type_id=t.biliBili_rid) as secret,
+    (select count(e.biliBili_mid) from video_author e where e.sex='女' and e.type_id=t.biliBili_rid) as female from style t
+    GROUP BY t.biliBili_rid;
     </select>
 </mapper>

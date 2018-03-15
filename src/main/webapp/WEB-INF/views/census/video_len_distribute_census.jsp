@@ -30,7 +30,7 @@
                     var views = [];
                     var data = jsonData.data;
                     for (var i = 0; i < data.length; i++) {
-                        typeData[i] = data[i].typeName;
+                        typeData[i] = data[i].typeName!=undefined?data[i].typeName:'综合';
                         durationData[i] = data[i].duration;
                         videoCount[i] = data[i].videoCount;
                         views[i] = data[i].views;
