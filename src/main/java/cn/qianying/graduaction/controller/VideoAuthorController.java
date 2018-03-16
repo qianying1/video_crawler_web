@@ -1,5 +1,6 @@
 package cn.qianying.graduaction.controller;
 
+import cn.qianying.graduaction.redis.RedisUtil;
 import cn.qianying.graduaction.service.VideoAuthorService;
 import cn.qianying.graduaction.util.JsonMessage;
 import cn.qianying.graduaction.vo.AuthorTypeDistributeVo;
@@ -18,6 +19,8 @@ public class VideoAuthorController {
 
     @Resource(name = "videoAuthorServiceImpl")
     private VideoAuthorService videoAuthorService;
+    @Resource(name = "redisUtil")
+    private RedisUtil redisUtil;
 
     /**
      * 视频作者类型分布统计
@@ -28,7 +31,11 @@ public class VideoAuthorController {
     public
     @ResponseBody
     Object typeDistributeCensus() {
-        List<AuthorTypeDistributeVo> vos = videoAuthorService.authorTypeDistruteCensus();
+        List<AuthorTypeDistributeVo> vos=(List<AuthorTypeDistributeVo>) redisUtil.get("authorTypeDistributeVos");
+        if (vos==null||vos.isEmpty()){
+            vos = videoAuthorService.authorTypeDistruteCensus();
+            redisUtil.set("authorTypeDistributeVos",vos);
+        }
         System.out.println("typeDistributeCensus: ");
         System.out.println(vos);
         return JsonMessage.success("data", vos);
@@ -43,7 +50,11 @@ public class VideoAuthorController {
     public
     @ResponseBody
     Object videoAuthorSexRateCensus() {
-        List<VideoAuthorSexRateCensusVo> vos=videoAuthorService.videoAuthorSexRateCensus();
+        List<VideoAuthorSexRateCensusVo> vos=(List<VideoAuthorSexRateCensusVo>) redisUtil.get("videoAuthorSexRateCensusVos");
+        if (vos==null||vos.isEmpty()){
+            vos=videoAuthorService.videoAuthorSexRateCensus();
+            redisUtil.set("videoAuthorSexRateCensusVos",vos);
+        }
         System.out.println("videoAuthorSexRateCensus: ");
         System.out.println(vos);
         return JsonMessage.success("data",vos);

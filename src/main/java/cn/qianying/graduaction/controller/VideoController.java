@@ -1,5 +1,6 @@
 package cn.qianying.graduaction.controller;
 
+import cn.qianying.graduaction.redis.RedisUtil;
 import cn.qianying.graduaction.service.VideoService;
 import cn.qianying.graduaction.util.JsonMessage;
 import cn.qianying.graduaction.vo.VideoCommentsDistributeCensusVo;
@@ -31,6 +32,8 @@ public class VideoController {
     private final String CENSUS_PAGE = "census/";
     @Resource(name = "videoServiceImpl")
     private VideoService videoService;
+    @Resource(name = "redisUtil")
+    private RedisUtil redisUtil;
 
     /**
      * rest风格请求
@@ -56,7 +59,12 @@ public class VideoController {
     @ResponseBody
     Object
     videoLikesCensus() {
-        List<VideoLikesCensusVo> likesCensusVos = videoService.videoLikeCensus();
+        List<VideoLikesCensusVo> likesCensusVos;
+        likesCensusVos=(List<VideoLikesCensusVo>) redisUtil.get("likesCensusVos");
+        if (likesCensusVos==null||likesCensusVos.isEmpty()){
+            likesCensusVos = videoService.videoLikeCensus();
+            redisUtil.set("likesCensusVos",likesCensusVos);
+        }
         System.out.println("videoLikesCensus: ");
         System.out.println(likesCensusVos);
         return JsonMessage.success("data", likesCensusVos);
@@ -71,7 +79,12 @@ public class VideoController {
     public
     @ResponseBody
     Object videoLenDistributeCensus() {
-        List<VideoLenDistributeCensusVo> vos = videoService.videoLenDistributeCensus();
+        List<VideoLenDistributeCensusVo> vos;
+        vos=(List<VideoLenDistributeCensusVo>) redisUtil.get("videoLenDistributeCensusVos");
+        if (vos==null||vos.isEmpty()){
+            vos= videoService.videoLenDistributeCensus();
+            redisUtil.set("videoLenDistributeCensusVos",vos);
+        }
         System.out.println("videoLenDistributeCensus: ");
         System.out.println(vos);
         return JsonMessage.success("data", vos);
@@ -86,7 +99,11 @@ public class VideoController {
     public
     @ResponseBody
     Object videoCommentsDistributeCensus() {
-        List<VideoCommentsDistributeCensusVo> vos = videoService.videoCommentsDistributeCensus();
+        List<VideoCommentsDistributeCensusVo> vos=(List<VideoCommentsDistributeCensusVo>) redisUtil.get("videoCommentsDistributeCensusVos");
+        if (vos==null||vos.isEmpty()){
+            vos = videoService.videoCommentsDistributeCensus();
+            redisUtil.set("videoCommentsDistributeCensusVos",vos);
+        }
         System.out.println("videoCommentsDistributeCensus: ");
         System.out.println(vos);
         return JsonMessage.success("data", vos);
@@ -101,7 +118,11 @@ public class VideoController {
     public
     @ResponseBody
     Object videoIncomeDistributeCensus() {
-        List<VideoIncomeDistributeCensusVo> vos = videoService.videoIncomeDistributeCensus();
+        List<VideoIncomeDistributeCensusVo> vos=(List<VideoIncomeDistributeCensusVo>) redisUtil.get("videoIncomeDistributeCensusVos");
+        if (vos==null||vos.isEmpty()){
+            vos = videoService.videoIncomeDistributeCensus();
+            redisUtil.set("videoIncomeDistributeCensusVos",vos);
+        }
         System.out.println("videoIncomeDistributeCensus:");
         System.out.println(vos);
         return JsonMessage.success("data", vos);

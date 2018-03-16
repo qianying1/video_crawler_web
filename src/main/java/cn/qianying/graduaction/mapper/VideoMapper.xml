@@ -57,7 +57,7 @@
     </select>
 
     <select id="videoCommentsDistributeCensus" resultMap="videoCommentsDistributeCensusMap">
-      select t.biliBili_rid as typeId,t.styleName as typeName,sum(v.masks) as mask,sum(v.comments) as comments,sum(v.review) as reviews,count(v.bili_aid) as videoCount from video v LEFT join style t on t.biliBili_rid=v.biliBili_rid GROUP BY t.biliBili_rid;
+      select t.biliBili_rid as typeId,t.styleName as typeName,sum(v.masks) as mask,sum(v.comments) as comments,sum(v.review) as reviews,count(v.bili_aid) as videoCount from style t LEFT join video v on t.biliBili_rid=v.biliBili_rid GROUP BY t.biliBili_rid;
     </select>
 
     <select id="videoIncomeDistributeCensus" resultMap="videoIncomeDistributeCensusMap">
