@@ -9,31 +9,31 @@ public class AuthorTypeDistributeVo implements Serializable{
     /**
      * 类型id
      */
-    private Long typeId;
+    private Long typeId=0l;
     /**
      * 类型名称
      */
-    private String typeName;
+    private String typeName="";
     /**
      * 作者数量
      */
-    private Long authorCount;
+    private Long authorCount=0l;
     /**
      * 追随者数量
      */
-    private Long follower;
+    private Long follower=0l;
     /**
      * 观众数量
      */
-    private Long audienceCount;
+    private Long audienceCount=0l;
     /**
      * 关注人数
      */
-    private Long attentionCount;
+    private Long attentionCount=0l;
     /**
      * 视频数量
      */
-    private Long videoCount;
+    private Long videoCount=0l;
 
     public Long getTypeId() {
         return typeId;
